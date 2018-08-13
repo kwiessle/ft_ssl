@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   sha256_process.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/11 13:27:52 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/12 10:59:28 by kwiessle         ###   ########.fr       */
+/*   Created: 2018/08/11 18:25:37 by kwiessle          #+#    #+#             */
+/*   Updated: 2018/08/13 11:29:09 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_ssl.h"
 
-static long	max_power(long nb, int base)
+
+
+uint32_t        sha256_p0(t_sha256 *s, int p)
 {
-	long max;
-
-	max = base;
-	while (max <= 2147483648)
-		max *= base;
-	if (max > nb)
-		max /= base;
-	return (max);
+    return R_ROT(s->w[p -15], 7) ^ R_ROT(s->w[p -15], 18) ^ s->w[p -15] >> 3;
 }
 
-void    ft_putnbr_base(unsigned int n, int base, char *set)
+uint32_t        sha256_p1(t_sha256 *s, int p)
 {
-    long            power = max_power(n, base);
+    return R_ROT(s->w[p -2], 17) ^ R_ROT(s->w[p -2], 19) ^ s->w[p -2] >> 10;
+}
 
-    while (power > 0) {
-        ft_putchar(set[n / power]);
-        n %= power;
-        power = power / base;
-    }
+uint32_t        sha256_word(uint8_t a, uint8_t b, uint8_t c, uint8_t d)
+{
+    return a << 24 | b << 16 | c << 8 | d;
 }

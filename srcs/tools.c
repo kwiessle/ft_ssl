@@ -6,7 +6,7 @@
 /*   By: kiefer <kiefer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 17:14:07 by kiefer            #+#    #+#             */
-/*   Updated: 2018/08/11 17:23:27 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/13 11:29:09 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ size_t      get_padding_size(size_t len)
     return 448 - modulo;
 }
 
-int     little_endian(uint32_t h)
+int         little_endian(uint32_t h)
 {
     int b0, b1, b2, b3;
     b0 = (h & 0x000000FF) >> 0;

@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 12:04:37 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/11 16:55:56 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/12 17:10:09 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void    md5_execute(t_input *input)
 
 void    md5_run(t_md5 *md5)
 {
-    int bloc;
+    uint64_t chunk;
 
-    bloc = 0;
-    while (bloc < ((md5->encoded_len) / 512))
+    chunk = 0;
+    while (chunk < ((md5->encoded_len) / 512))
     {
-        ft_memcpy(md5->w, &md5->data[bloc * 64], 64);
+        ft_memcpy(md5->w, &md5->data[chunk * 64], 64);
 
         md5->a = md5->h0;
         md5->b = md5->h1;
@@ -46,7 +46,7 @@ void    md5_run(t_md5 *md5)
         md5->h1 += md5->b;
         md5->h2 += md5->c;
         md5->h3 += md5->d;
-        bloc++;
+        chunk++;
     }
 }
 
@@ -70,7 +70,7 @@ void    md5_hash(t_md5 *md5)
         tmp = md5->d;
         md5->d = md5->c;
         md5->c = md5->b;
-        md5->b = LEFT_ROTATE((md5->a + md5->f + md5_k(i) + md5->w[md5->g]), md5_r(i)) + md5->b;
+        md5->b = L_ROT((md5->a + md5->f + md5_k(i) + md5->w[md5->g]), md5_r(i)) + md5->b;
         md5->a = tmp;
 
         i++;

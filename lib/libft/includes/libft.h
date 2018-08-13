@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 17:34:58 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/11 16:41:16 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/12 11:11:49 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ int					get_next_line(const int fd, char **line);
 char 				*ft_strappend(char *chain, char new);
 char				*ft_itoa_base(long value, int base);
 void				ft_putnbr_base(unsigned int n, int base, char *set);
+void 				ft_swap(unsigned char *a, unsigned char *b);
 
 #endif

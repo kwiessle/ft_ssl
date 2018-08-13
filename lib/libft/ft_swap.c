@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/11 13:27:52 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/12 10:59:28 by kwiessle         ###   ########.fr       */
+/*   Created: 2018/08/12 11:07:03 by kwiessle          #+#    #+#             */
+/*   Updated: 2018/08/12 11:12:12 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static long	max_power(long nb, int base)
-{
-	long max;
+void ft_swap(unsigned char *a, unsigned char *b) {
+    unsigned char tmp;
 
-	max = base;
-	while (max <= 2147483648)
-		max *= base;
-	if (max > nb)
-		max /= base;
-	return (max);
-}
-
-void    ft_putnbr_base(unsigned int n, int base, char *set)
-{
-    long            power = max_power(n, base);
-
-    while (power > 0) {
-        ft_putchar(set[n / power]);
-        n %= power;
-        power = power / base;
-    }
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
