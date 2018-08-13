@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 18:25:17 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/13 10:45:25 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/13 12:52:25 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ void        sha256_padding(t_sha256 *sha256)
 
 void    sha256_output(t_sha256 *sha256)
 {
-    ft_putstr("SHA256 (\"");
-    ft_putstr(sha256->input->message);
-    ft_putstr("\") = ");
+    // ft_putstr("SHA256 (\"");
+    // ft_putstr(sha256->input->message);
+    // ft_putstr("\") = ");
     ft_putnbr_base(sha256->h0, 16, B16_SET);
     ft_putnbr_base(sha256->h1, 16, B16_SET);
     ft_putnbr_base(sha256->h2, 16, B16_SET);
