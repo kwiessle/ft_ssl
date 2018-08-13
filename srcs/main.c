@@ -21,6 +21,11 @@ int     main(int ac, char **av)
             sha256_execute(input);
             return 0;
         }
+        else if (ft_strcmp(av[1], "sha512") == 0) {
+            input = input_init(av[2]);
+            sha512_execute(input);
+            return 0;
+        }
         else {
             ft_putstr("Error : Unkown Command\n");
         }

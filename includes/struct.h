@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/10 18:18:21 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/13 10:43:57 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/13 13:18:50 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct          s_sha256
     t_input         *input;
     uint8_t         *data;
     uint64_t        encoded_len;
-    uint32_t        current[16];
     uint32_t        w[64];
     uint32_t        h0;
     uint32_t        h1;
@@ -70,6 +69,34 @@ typedef struct          s_sha256
     uint32_t        ch;
     uint32_t        maj;
 }                       t_sha256;
+
+typedef struct          s_sha512
+{
+    t_input         *input;
+    uint8_t         *data;
+    uint64_t        encoded_len;
+    uint64_t        w[80];
+    uint64_t        h0;
+    uint64_t        h1;
+    uint64_t        h2;
+    uint64_t        h3;
+    uint64_t        h4;
+    uint64_t        h5;
+    uint64_t        h6;
+    uint64_t        h7;
+    uint64_t         a;
+    uint64_t         b;
+    uint64_t         c;
+    uint64_t         d;
+    uint64_t         e;
+    uint64_t         f;
+    uint64_t         g;
+    uint64_t         h;
+    uint64_t        s0;
+    uint64_t        s1;
+    uint64_t        ch;
+    uint64_t        maj;
+}                       t_sha512;
 
 
 

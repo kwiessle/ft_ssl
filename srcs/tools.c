@@ -6,7 +6,7 @@
 /*   By: kiefer <kiefer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 17:14:07 by kiefer            #+#    #+#             */
-/*   Updated: 2018/08/13 11:29:09 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/13 14:19:51 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ char    *get_input(int fd)
     return (input);
 }
 
-size_t      get_padding_size(size_t len)
+size_t      get_padding_size(size_t len, int modulo, size_t congruent)
 {
-    size_t modulo;
+    size_t result;
 
-    modulo = len % 512;
+    result = len % modulo;
 
-    if (modulo >= 448)
-        return 960 - modulo;
-    return 448 - modulo;
+    if (result >= congruent)
+        return (modulo + congruent) - result;
+    return congruent - result;
 }
 
 int         little_endian(uint32_t h)

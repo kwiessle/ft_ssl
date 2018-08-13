@@ -11,7 +11,7 @@
 
 t_input         *input_init(char *message);
 char            *get_input(int fd);
-size_t          get_padding_size(size_t len);
+size_t          get_padding_size(size_t len, int modulo, size_t congruent);
 int             little_endian(uint32_t h);
 
 /*
@@ -53,6 +53,30 @@ uint32_t            sha256_p1(t_sha256 *s, int pos);
 void                sha256_hash(t_sha256 *sha256);
 void                sha256_output(t_sha256 *sha256);
 uint32_t            sha256_word(uint8_t a, uint8_t b, uint8_t c, uint8_t d);
+
+
+
+/*
+**  -----------------------------------------------------
+**                  S  H  A  5  1  2
+**  -----------------------------------------------------
+*/
+
+t_sha512            *sha512_init(t_input *input);
+void                sha512_execute(t_input *input);
+t_sha512            *sha512_init(t_input *input);
+void                sha512_padding(t_sha512 *sha512);
+uint64_t            sha512_k(int index);
+uint64_t            sha512_k40(int index);
+uint64_t            sha512_k80(int index);
+void                sha512_run(t_sha512 *sha512);
+void                sha512_add(t_sha512 *sha512);
+void                sha512_decompose(t_sha512 *sha512, int *k);
+uint64_t            sha512_p0(t_sha512 *s, int pos);
+uint64_t            sha512_p1(t_sha512 *s, int pos);
+void                sha512_hash(t_sha512 *sha512);
+void                sha512_output(t_sha512 *sha512);
+uint64_t            sha512_word(t_sha512 *sha512, int cursor);
 
 
 #endif

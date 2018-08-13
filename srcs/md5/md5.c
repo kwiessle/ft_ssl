@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 12:04:37 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/12 17:10:09 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/13 13:56:44 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void    md5_padding(t_md5 *md5)
     uint64_t    len;
 
     len = md5->input->len;
-    padding = get_padding_size(len);
+    padding = get_padding_size(len, 512, 448);
 
     md5->data = ft_memalloc((len + padding + 64) / 8);
     md5->encoded_len = (len + padding + 64);

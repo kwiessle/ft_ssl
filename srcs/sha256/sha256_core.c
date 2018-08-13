@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 18:25:17 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/13 12:52:25 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/13 13:56:59 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void        sha256_padding(t_sha256 *sha256)
     long        len;
 
     len = sha256->input->len;
-    padding = get_padding_size(len);
+    padding = get_padding_size(len, 512, 448);
     sha256->data = ft_memalloc((len + padding + 64) / 8);
 
     sha256->encoded_len = (len + padding + 64);

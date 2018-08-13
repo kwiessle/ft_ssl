@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:27:52 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/12 10:59:28 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/13 15:54:24 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,13 @@ void    ft_putnbr_base(unsigned int n, int base, char *set)
         n %= power;
         power = power / base;
     }
+}
+
+void	ft_putbignbr_base(unsigned long n, int base, char *set)
+{
+	unsigned int	lhs;
+
+	lhs = n  >> 32;
+	ft_putnbr_base(lhs, base, set);
+	ft_putnbr_base(n, base, set);
 }

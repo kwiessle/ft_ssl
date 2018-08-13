@@ -8,6 +8,10 @@ SRCS = 	srcs/main.c							\
 		srcs/sha256/sha256.c				\
 		srcs/sha256/sha256_core.c			\
 		srcs/sha256/sha256_process.c		\
+		srcs/sha512/sha512.c				\
+		srcs/sha512/sha512_core.c			\
+		srcs/sha512/sha512_process.c		\
+		srcs/sha512/sha512_constants.c		\
 
 OBJS = $(SRCS:.c=.o)
 INCLUDES =-I lib/libft/includes -I includes
