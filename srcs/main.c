@@ -18,7 +18,7 @@ int     main(int ac, char **av)
     }
     else {
         throw_error(ERR_NCMD, "");
-        ft_putstr("Usage :\n [1] - Cmd  : <md5, sha256>\n [2] - Data : <string>\n");
+        ft_putstr("Usage :\n [1] - Cmd  : <md5, sha256, sha512>\n [2] - Options : [ -p, -r, -q]\n [3] - String : -s <string> \n [4] - File : <file>\n");
     }
     return (0);
 }
