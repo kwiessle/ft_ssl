@@ -13,6 +13,7 @@ t_input         *input_init(char *message);
 char            *get_input(int fd);
 size_t          get_padding_size(size_t len, int modulo, size_t congruent);
 int             little_endian(uint32_t h);
+void            throw_error(char *err, char *desc);
 
 /*
 **  -----------------------------------------------------
@@ -32,6 +33,8 @@ void                md5_process_4(t_md5 *md5, int pos);
 void                md5_output(t_md5 *md5);
 uint32_t            md5_r(int index);
 uint32_t            md5_k(int index);
+
+
 
 
 /*
@@ -78,5 +81,10 @@ void                sha512_hash(t_sha512 *sha512);
 void                sha512_output(t_sha512 *sha512);
 uint64_t            sha512_word(t_sha512 *sha512, int cursor);
 
+
+
+void                hash_engine(char **args, void (*p)(t_input *), char *name);
+void                interpret_command(t_hash *env, char *entry, char *arg);
+t_hash              *hash_init(char **entries, char *name, void (*cmd)(t_input *));
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/10 18:26:32 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/13 14:27:50 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/13 19:03:07 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 # define MD5_F3(b, c, d) (b ^ c ^ d)
 # define MD5_F4(b, c, d) (c ^ (b | (~d)))
 
-
+# define ERR_CMD "Invalid command name"
+# define ERR_NCMD "Must have a least one argument"
+# define ERR_MD5_NA "MD5 [–s] option requires an argument"
+# define ERR_MD5_NOFILE "File not found"
 
 #endif

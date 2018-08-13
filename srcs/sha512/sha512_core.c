@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 13:15:12 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/13 16:15:52 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/13 21:25:58 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,6 @@ void        sha512_padding(t_sha512 *sha512)
 
 void    sha512_output(t_sha512 *sha512)
 {
-    // ft_putstr("SHA512 (\"");
-    // ft_putstr(sha512->input->message);
-    // ft_putstr("\") = ");
     ft_putbignbr_base(sha512->h0, 16, B16_SET);
     ft_putbignbr_base(sha512->h1, 16, B16_SET);
     ft_putbignbr_base(sha512->h2, 16, B16_SET);
@@ -79,5 +76,4 @@ void    sha512_output(t_sha512 *sha512)
     ft_putbignbr_base(sha512->h5, 16, B16_SET);
     ft_putbignbr_base(sha512->h6, 16, B16_SET);
     ft_putbignbr_base(sha512->h7, 16, B16_SET);
-    ft_putchar('\n');
 }

@@ -3,33 +3,22 @@
 
 int     main(int ac, char **av)
 {
-    (void)ac;
-    (void)av;
-
-    t_input     *input;
-
-    // input = input_init(get_input(STDIN));
-
-    if (ac > 2) {
+    if (ac > 1) {
         if (ft_strcmp(av[1], "md5") == 0) {
-            input = input_init(av[2]);
-            md5_execute(input);
-            return 0;
+            hash_engine(av, &md5_execute, "MD5");
         }
         else if (ft_strcmp(av[1], "sha256") == 0) {
-            input = input_init(av[2]);
-            sha256_execute(input);
-            return 0;
+            hash_engine(av, &sha256_execute, "SHA256");
         }
         else if (ft_strcmp(av[1], "sha512") == 0) {
-            input = input_init(av[2]);
-            sha512_execute(input);
-            return 0;
+            hash_engine(av, &sha512_execute, "sha512");
         }
-        else {
-            ft_putstr("Error : Unkown Command\n");
-        }
+        else
+            throw_error(ERR_CMD, "");
     }
-    ft_putstr("Usage :\n [1] - Cmd  : <md5, sha256>\n [2] - Data : <string>\n");
+    else {
+        throw_error(ERR_NCMD, "");
+        ft_putstr("Usage :\n [1] - Cmd  : <md5, sha256>\n [2] - Data : <string>\n");
+    }
     return (0);
 }

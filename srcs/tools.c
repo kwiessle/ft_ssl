@@ -6,7 +6,7 @@
 /*   By: kiefer <kiefer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 17:14:07 by kiefer            #+#    #+#             */
-/*   Updated: 2018/08/13 14:19:51 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/13 20:11:49 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,14 @@ int         little_endian(uint32_t h)
     b2 = (h & 0x00FF0000) >> 16;
     b3 = (h & 0xFF000000) >> 24;
     return b0 << 24 | b1 << 16 | b2 << 8 | b3 << 0;
+}
+
+
+void        throw_error(char *err, char *desc)
+{
+    ft_putstr("Error : ");
+    ft_putstr(err);
+    ft_putchar(' ');
+    ft_putstr(desc);
+    ft_putchar('\n');
 }

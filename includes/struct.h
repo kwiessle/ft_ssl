@@ -6,20 +6,33 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/10 18:18:21 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/13 13:18:50 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/13 23:20:55 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-
+typedef enum s_state {off, on} e_state;
 
 typedef struct          s_input
 {
     char        *message;
     size_t      len;
 }                       t_input;
+
+
+typedef struct          s_env
+{
+    e_state             q;
+    e_state             r;
+    e_state             stop;
+    int                 entries_len;
+    int                 ignored_entries;
+    char                *cmd_name;
+    void                (*cmd_execute)(t_input *);
+
+}                       t_hash;
 
 
 

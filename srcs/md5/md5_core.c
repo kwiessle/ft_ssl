@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/10 16:17:03 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/13 12:52:25 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/13 21:25:58 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,8 @@ t_md5   *md5_init(t_input *input)
 
 void    md5_output(t_md5 *md5)
 {
-    // ft_putstr("MD5 (\"");
-    // ft_putstr(md5->input->message);
-    // ft_putstr("\") = ");
     ft_putnbr_base(little_endian(md5->h0), 16, B16_SET);
     ft_putnbr_base(little_endian(md5->h1), 16, B16_SET);
     ft_putnbr_base(little_endian(md5->h2), 16, B16_SET);
     ft_putnbr_base(little_endian(md5->h3), 16, B16_SET);
-    ft_putchar('\n');
 }
