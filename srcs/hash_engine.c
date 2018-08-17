@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 20:59:12 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/13 23:31:00 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/14 16:33:52 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void        stdin_compute(t_hash *env, e_state flag) {
     t_input     *input;
 
-    input = input_init(get_input(0));
+    input = input_init(get_input(STDIN));
     if (flag == on)
     {
         ft_putstr_drop(input->message, '\n');

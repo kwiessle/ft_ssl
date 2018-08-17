@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/10 18:18:21 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/13 23:20:55 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/16 16:22:42 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,26 @@
 
 typedef enum s_state {off, on} e_state;
 
+
+
+
 typedef struct          s_input
 {
-    char        *message;
-    size_t      len;
+    char            *message;
+    size_t          len;
 }                       t_input;
 
 
-typedef struct          s_env
+
+typedef struct          s_hash
 {
-    e_state             q;
-    e_state             r;
-    e_state             stop;
-    int                 entries_len;
-    int                 ignored_entries;
-    char                *cmd_name;
-    void                (*cmd_execute)(t_input *);
+    e_state         q;
+    e_state         r;
+    e_state         stop;
+    int             entries_len;
+    int             ignored_entries;
+    char            *cmd_name;
+    void            (*cmd_execute)(t_input *);
 
 }                       t_hash;
 
@@ -54,6 +58,8 @@ typedef struct          s_md5
     uint32_t         h3;
 
 }                       t_md5;
+
+
 
 typedef struct          s_sha256
 {
@@ -81,6 +87,7 @@ typedef struct          s_sha256
     uint32_t        s1;
     uint32_t        ch;
     uint32_t        maj;
+
 }                       t_sha256;
 
 typedef struct          s_sha512
@@ -109,9 +116,24 @@ typedef struct          s_sha512
     uint64_t        s1;
     uint64_t        ch;
     uint64_t        maj;
+
 }                       t_sha512;
 
 
+
+typedef struct          s_base64
+{
+    t_input         *input;
+    uint8_t         *data;
+    int             padding;
+    int             chunk[4];
+    int             i_fd;
+    int             o_fd;
+    e_state         e;
+    e_state         d;
+    void            (*cmd_execute)(struct s_base64 *);
+
+}                       t_base64;
 
 
 

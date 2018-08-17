@@ -15,6 +15,9 @@ SRCS = 	srcs/main.c							\
 		srcs/hash_engine.c					\
 		srcs/hash_flags.c					\
 		srcs/hash_init.c					\
+		srcs/base64/base64.c				\
+		srcs/base64/base64_init.c			\
+		srcs/base64/base64_print.c			\
 
 
 OBJS = $(SRCS:.c=.o)

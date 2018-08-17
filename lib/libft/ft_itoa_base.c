@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/10 18:42:01 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/11 13:55:45 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/14 14:13:38 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,38 @@ char	*ft_itoa_base(long value, int base)
         ft_putchar(text[i]);
 		nb %= max;
 		max /= base;
+		i++;
+	}
+	return (text);
+}
+
+
+char	*ft_itoa_base64(long value)
+{
+
+	long			max;
+	static char		hex[64] = B64_SET;
+	char			*text;
+	static int		i;
+	long			nb;
+
+	text = ft_strnewzero(int_len(value, 64));
+	nb = value;
+	if (nb < 0 && 64 == 10)
+	{
+		text[i] = '-';
+		i++;
+		nb = -nb;
+	}
+	if (nb < 0 && 64 != 10)
+		nb = -nb;
+	max = max_power(nb, 64) - 1;
+	while (max > 0)
+	{
+		text[i] = hex[nb / max];
+        ft_putchar(text[i]);
+		nb %= max;
+		max /= 64;
 		i++;
 	}
 	return (text);

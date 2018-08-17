@@ -6,7 +6,7 @@
 #    By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/10/13 10:51:52 by kwiessle          #+#    #+#              #
-#    Updated: 2018/08/13 19:53:36 by kwiessle         ###   ########.fr        #
+#    Updated: 2018/08/16 16:48:50 by kwiessle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,7 @@ SRC= ft_atoi.c \
 		  ft_putnbr_base.c \
 		  ft_swap.c \
 		  ft_putstr_drop.c \
+		  ft_strcrop.c \
 
 HEADER = ./includes
 OBJ = $(SRC:.c=.o)

@@ -4,15 +4,14 @@
 int     main(int ac, char **av)
 {
     if (ac > 1) {
-        if (ft_strcmp(av[1], "md5") == 0) {
+        if (ft_strcmp(av[1], "md5") == 0)
             hash_engine(av, &md5_execute, "MD5");
-        }
-        else if (ft_strcmp(av[1], "sha256") == 0) {
+        else if (ft_strcmp(av[1], "sha256") == 0)
             hash_engine(av, &sha256_execute, "SHA256");
-        }
-        else if (ft_strcmp(av[1], "sha512") == 0) {
+        else if (ft_strcmp(av[1], "sha512") == 0)
             hash_engine(av, &sha512_execute, "sha512");
-        }
+        else if (ft_strcmp(av[1], "base64") == 0)
+            base64_engine(av);
         else
             throw_error(ERR_CMD, "");
     }

@@ -1,7 +1,7 @@
 #ifndef FT_SSL
 # define FT_SSL
 
-# define STDIN 0
+
 
 # include "libft.h"
 # include <stdio.h>
@@ -82,9 +82,17 @@ void                sha512_output(t_sha512 *sha512);
 uint64_t            sha512_word(t_sha512 *sha512, int cursor);
 
 
+void                base64_engine(char **args);
+void                base64_encode(t_base64 *b64);
+void                base64_decode(t_base64 *b64);
+t_base64            *init_base64(char **args);
+void                base64_print_encoded(t_base64 *b64, e_state last);
+void                base64_print_decoded(t_base64 *b64);
+
 
 void                hash_engine(char **args, void (*p)(t_input *), char *name);
 void                interpret_command(t_hash *env, char *entry, char *arg);
 t_hash              *hash_init(char **entries, char *name, void (*cmd)(t_input *));
+
 
 #endif

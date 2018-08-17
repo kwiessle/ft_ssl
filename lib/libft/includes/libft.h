@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 17:34:58 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/13 19:53:15 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/16 16:48:36 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@
 # define EOL '\n'
 # define B16_SET "0123456789abcdef"
 # define B64_SET "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+
+typedef enum 		s_bool
+{
+	false,
+	true
+}					e_bool;
 
 typedef struct		s_list
 {
@@ -105,4 +111,7 @@ void				ft_putnbr_base(unsigned int n, int base, char *set);
 void 				ft_swap(unsigned char *a, unsigned char *b);
 void				ft_putbignbr_base(unsigned long n, int base, char *set);
 void    			ft_putstr_drop(char *str, char drop);
+char    			*ft_itoa_base64(long nb);
+int         		ft_stroccur(char *str, char *set);
+char		        *ft_strcrop(char *str, char *set);
 #endif
