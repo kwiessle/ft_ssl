@@ -1,7 +1,6 @@
 NAME = ft_ssl
 
 SRCS = 	srcs/main.c							\
-		srcs/tools.c						\
 		srcs/md5/md5.c						\
 		srcs/md5/md5_core.c					\
 		srcs/md5/md5_process.c				\
@@ -12,12 +11,14 @@ SRCS = 	srcs/main.c							\
 		srcs/sha512/sha512_core.c			\
 		srcs/sha512/sha512_process.c		\
 		srcs/sha512/sha512_constants.c		\
-		srcs/hash_engine.c					\
-		srcs/hash_flags.c					\
-		srcs/hash_init.c					\
+		srcs/mdig_engine/mdig_engine.c		\
+		srcs/mdig_engine/mdig_flags.c		\
+		srcs/mdig_engine/mdig_init.c		\
 		srcs/base64/base64.c				\
 		srcs/base64/base64_init.c			\
 		srcs/base64/base64_print.c			\
+		srcs/input.c						\
+		srcs/ssl.c							\
 
 
 OBJS = $(SRCS:.c=.o)

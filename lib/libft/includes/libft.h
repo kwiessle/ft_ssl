@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 17:34:58 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/16 16:48:36 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/18 12:35:01 by kiefer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ typedef enum 		s_bool
 	false,
 	true
 }					e_bool;
+
+typedef enum 		s_state
+{
+	off,
+	on
+ } 					e_state;
 
 typedef struct		s_list
 {

@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 18:20:16 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/13 14:29:05 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/17 16:09:49 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void        sha256_execute(t_input *input) {
     sha256_padding(sha256);
     sha256_run(sha256);
     sha256_output(sha256);
+    free(sha256->input);
+    free(sha256);
 }
 
 
@@ -64,7 +66,7 @@ void        sha256_decompose(t_sha256 *s, int *c)
     i = 0;
     while (i < 16)
 	{
-        w = sha256_word(s->data[*c],s->data[*c+1],s->data[*c+2],s->data[*c+3]);
+        w = W_32(s->data[*c],s->data[*c+1],s->data[*c+2],s->data[*c+3]);
         s->w[i] = w;
 		*c += 4;
         i++;

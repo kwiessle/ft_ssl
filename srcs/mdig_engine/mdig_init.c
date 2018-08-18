@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hash_init.c                                        :+:      :+:    :+:   */
+/*   mdig_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 23:24:31 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/13 23:27:59 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/18 13:01:27 by kiefer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
-void    detect_global_flags(t_hash *env, char **entries) {
+
+void    detect_global_flags(t_mdig *env, char **entries) {
     int i;
 
     i = 0;
@@ -34,11 +35,11 @@ void    detect_global_flags(t_hash *env, char **entries) {
 }
 
 
-t_hash       *hash_init(char **entries, char *name, void (*cmd)(t_input *))
+t_mdig       *mdig_init(char **entries, char *name, void (*cmd)(t_input *))
 {
-    t_hash   *env;
+    t_mdig   *env;
 
-    if (!(env = malloc(sizeof(t_hash))))
+    if (!(env = malloc(sizeof(t_mdig))))
         return NULL;
     env->q = off;
     env->r = off;
@@ -47,5 +48,6 @@ t_hash       *hash_init(char **entries, char *name, void (*cmd)(t_input *))
     env->cmd_name = name;
     env->stop = off;
     detect_global_flags(env, entries);
+
     return env;
 }

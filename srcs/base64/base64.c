@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:41:04 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/16 17:47:11 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/17 16:44:21 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void      base64_encode(t_base64 *b64)
     last = off;
     while (i < (int)(b64->input->len/8) + b64->padding)
     {
-        b24 =  sha256_word(0x0, b64->data[i], b64->data[i+1], b64->data[i+2]);
+        b24 =  W_32(0x0, b64->data[i], b64->data[i+1], b64->data[i+2]);
         b64->chunk[0] = b24 >> 18;
         b64->chunk[1] = (0x3FFFF & b24) >> 12;
         b64->chunk[2] = (0xFFF & b24) >> 6;
@@ -59,19 +59,14 @@ void      base64_decode(t_base64 *b64)
 
 
 
-void      base64_engine(char **arg) {
+void      base64_execute(char **arg, char *cmd_name) {
 
     t_base64    *b64;
 
-    b64 = init_base64(arg);
+    b64 = init_base64(arg, cmd_name);
     b64->cmd_execute(b64);
-
-
-    // ft_putchar('\n');
-    // ft_putstr(b64->input->message);
-    // ft_putchar('\n');
-    // ft_putstr(ft_strcrop(b64->input->message, ));
-    // ft_putchar('\n');
     close(b64->i_fd);
     close(b64->o_fd);
+    free(b64->input);
+    free(b64);
 }

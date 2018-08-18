@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 13:15:21 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/13 15:56:26 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/17 14:02:14 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ uint64_t        sha512_word(t_sha512 *s, int c)
     uint64_t rhs;
 
 
-    lhs = sha256_word(s->data[c], s->data[c+1], s->data[c+2], s->data[c+3]);
-    rhs = sha256_word(s->data[c+4], s->data[c+5], s->data[c+6], s->data[c+7]);
+    lhs = W_32(s->data[c], s->data[c+1], s->data[c+2], s->data[c+3]);
+    rhs = W_32(s->data[c+4], s->data[c+5], s->data[c+6], s->data[c+7]);
     return lhs << 32 | rhs;
 }

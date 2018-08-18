@@ -24,3 +24,12 @@ printf '%s' "    me  ->  "
 printf '%s' "sha256  ->  "
 printf '%s' $TEST | shasum -a 512
 echo "----------------------------------------------------------------------------\n"
+
+
+echo "TEST 5 --------------- ENC_BASE_64 -----------------"
+printf '%s' "    me  ->  "
+echo *TEST | ./ft_ssl base64
+echo 
+printf '%s' "base64  ->  "
+echo *TEST | base64
+echo "----------------------------------------------------\n"

@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kiefer <kiefer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/08 17:14:07 by kiefer            #+#    #+#             */
-/*   Updated: 2018/08/13 20:11:49 by kwiessle         ###   ########.fr       */
+/*   Created: 2018/08/17 16:43:49 by kwiessle          #+#    #+#             */
+/*   Updated: 2018/08/18 12:52:07 by kiefer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
 
-
-t_input *input_init(char *message)
+t_input     *input_init(char *message)
 {
     t_input *new;
 
@@ -26,7 +25,8 @@ t_input *input_init(char *message)
     return new;
 }
 
-char    *get_input(int fd)
+
+char        *get_input(int fd)
 {
     char    buf;
     char    *input;
@@ -39,6 +39,7 @@ char    *get_input(int fd)
     return (input);
 }
 
+
 size_t      get_padding_size(size_t len, int modulo, size_t congruent)
 {
     size_t result;
@@ -50,22 +51,13 @@ size_t      get_padding_size(size_t len, int modulo, size_t congruent)
     return congruent - result;
 }
 
+
 int         little_endian(uint32_t h)
 {
     int b0, b1, b2, b3;
-    b0 = (h & 0x000000FF) >> 0;
-    b1 = (h & 0x0000FF00) >> 8;
-    b2 = (h & 0x00FF0000) >> 16;
+    b0 = (h & 0xFF);
+    b1 = (h & 0xFF00) >> 8;
+    b2 = (h & 0xFF0000) >> 16;
     b3 = (h & 0xFF000000) >> 24;
     return b0 << 24 | b1 << 16 | b2 << 8 | b3 << 0;
-}
-
-
-void        throw_error(char *err, char *desc)
-{
-    ft_putstr("Error : ");
-    ft_putstr(err);
-    ft_putchar(' ');
-    ft_putstr(desc);
-    ft_putchar('\n');
 }

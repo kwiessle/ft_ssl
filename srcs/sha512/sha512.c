@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 13:15:33 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/13 16:02:56 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/17 16:09:49 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void        sha512_execute(t_input *input) {
     sha512_padding(sha512);
     sha512_run(sha512);
     sha512_output(sha512);
+    free(sha512->input);
+    free(sha512);
 }
 
 

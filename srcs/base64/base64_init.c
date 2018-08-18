@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 11:02:01 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/16 17:52:51 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/17 18:17:20 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,18 +68,18 @@ void           base64_detect_flags(t_base64 *b64, char **args)
             else if (ft_strcmp(args[i], "-i") == 0)
             {
                 if ((b64->i_fd = open(args[++i], O_RDONLY)) < 0)
-                    throw_error("Canont open file", args[i]);
+                    ssl_throw_error("Canont open file", args[i], NULL);
             }
             else if (ft_strcmp(args[i], "-o") == 0)
             {
                 if ((b64->o_fd = open(args[++i], O_CLEAR, S_IRWXU)) < 0)
-                        throw_error("Canont open file", args[i]);
+                        ssl_throw_error("Canont open file", args[i], NULL);
             }
             i++;
     }
 }
 
-t_base64      *init_base64(char **args)
+t_base64      *init_base64(char **args, char *name)
 {
     t_base64    *b64;
 
@@ -91,6 +91,7 @@ t_base64      *init_base64(char **args)
     b64->o_fd = STDOUT;
     b64->d = off;
     b64->cmd_execute = &base64_encode;
+    b64->cmd_name = name;
     base64_detect_flags(b64, args);
     if (b64->d == on)
         b64->input = input_init(ft_strcrop(get_input(b64->i_fd), " \t\n\v\f\r"));

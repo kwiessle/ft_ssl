@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hash_engine.c                                      :+:      :+:    :+:   */
+/*   mdig_engine.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 20:59:12 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/14 16:33:52 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/18 13:02:38 by kiefer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
 
-void        stdin_compute(t_hash *env, e_state flag) {
+void        stdin_compute(t_mdig *env, e_state flag) {
     t_input     *input;
 
     input = input_init(get_input(STDIN));
@@ -27,26 +27,26 @@ void        stdin_compute(t_hash *env, e_state flag) {
 }
 
 
-void        file_compute(t_hash *env, char *filename)
+void        file_compute(t_mdig *env, char *filename)
 {
     int fd;
 
     env->stop = on;
     if ((fd = open(filename, O_RDONLY)) < 0)
-        throw_error(ERR_MD5_NOFILE, filename);
+        ssl_throw_error(ERR_MD5_NOFILE, filename, NULL);
     else
-        interpret_command(env, get_input(fd), filename);
+        mdig_output(env, get_input(fd), filename);
     close(fd);
 }
 
 
-void        hash_engine(char **args, void (*p)(t_input *), char *name)
+void        mdig_engine(char **args, void (*p)(t_input *), char *name)
 {
-    t_hash  *env;
+    t_mdig  *env;
     int         i;
 
     i = 2;
-    env = hash_init(args, name, p);
+    env = mdig_init(args, name, p);
     if (env->entries_len - env->ignored_entries == i) {
         stdin_compute(env, off);
         return;
@@ -55,9 +55,9 @@ void        hash_engine(char **args, void (*p)(t_input *), char *name)
         if (ft_strcmp(args[i], "-r") == 0 || ft_strcmp(args[i], "-q") == 0);
         else if (ft_strcmp(args[i], "-s") == 0 && env->stop == off) {
             if (++i < env->entries_len)
-                interpret_command(env, args[i], args[i]);
+                mdig_output(env, args[i], args[i]);
             else
-                throw_error(ERR_MD5_NA, "");
+                ssl_throw_error(ERR_MD5_NA, NULL, MD_USAGE);
         }
         else if (ft_strcmp(args[i], "-p") == 0)
             stdin_compute(env, on);

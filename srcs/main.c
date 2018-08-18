@@ -1,23 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kiefer <kiefer@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/08/18 12:51:55 by kiefer            #+#    #+#             */
+/*   Updated: 2018/08/18 12:52:02 by kiefer           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ssl.h"
 
 
 int     main(int ac, char **av)
 {
-    if (ac > 1) {
-        if (ft_strcmp(av[1], "md5") == 0)
-            hash_engine(av, &md5_execute, "MD5");
-        else if (ft_strcmp(av[1], "sha256") == 0)
-            hash_engine(av, &sha256_execute, "SHA256");
-        else if (ft_strcmp(av[1], "sha512") == 0)
-            hash_engine(av, &sha512_execute, "sha512");
-        else if (ft_strcmp(av[1], "base64") == 0)
-            base64_engine(av);
-        else
-            throw_error(ERR_CMD, "");
-    }
+    if (ac > 1)
+        ssl_dispatch_commands(av);
     else {
-        throw_error(ERR_NCMD, "");
-        ft_putstr("Usage :\n [1] - Cmd  : <md5, sha256, sha512>\n [2] - Options : [ -p, -r, -q]\n [3] - String : -s <string> \n [4] - File : <file>\n");
+        ssl_throw_error(SSL_ERR_NOCMD, NULL, SSL_USAGE);
     }
     return (0);
 }

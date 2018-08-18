@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 12:04:37 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/13 13:56:44 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/17 16:18:36 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void    md5_execute(t_input *input)
     md5_padding(md5);
     md5_run(md5);
     md5_output(md5);
-
+    free(md5->input);
+    free(md5);
     return;
 }
 

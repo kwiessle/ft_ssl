@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hash_flags.c                                       :+:      :+:    :+:   */
+/*   mdig_flags.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 23:22:02 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/13 23:31:00 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/18 13:01:27 by kiefer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
 
-void    reverse_output(t_hash *env, char *entry, char *arg) {
+void    reverse_output(t_mdig *env, char *entry, char *arg) {
     t_input *input;
 
     input = input_init(entry);
@@ -26,7 +26,7 @@ void    reverse_output(t_hash *env, char *entry, char *arg) {
         ft_putstr("\"");
 }
 
-void    default_output(t_hash *env, char *entry, char *arg)
+void    default_output(t_mdig *env, char *entry, char *arg)
 {
     t_input *input;
 
@@ -43,7 +43,7 @@ void    default_output(t_hash *env, char *entry, char *arg)
 }
 
 
-void    interpret_command(t_hash *env, char *entry, char *arg)
+void    mdig_output(t_mdig *env, char *entry, char *arg)
 {
     t_input     *input;
 
