@@ -4,14 +4,24 @@ OpenSSL is a cryptographic toolkit library written C that is used to secure comm
 over computer networks. It implements the Secure Sockets Layer (SSL) and
 Transport Layer Security (TLS) network protocols to protect against eavesdropping
 and verify identities during network communication. ft_ssl will try to recreatefrom scratch parts of the OpenSSL
-functionalities. 
+functionalities.
 
-## message diggest algoritms
+## message diggest commands
 
 ```
-. md5
-. sha256
-. sha512
+. md5           ✅
+. sha256        ✅
+. sha512        ✅
+. whirlpool     ❌
+```
+
+## Cipher commands
+
+```
+. base64        ✅
+. des           ❌
+. des-ecb       ❌
+. des-cbc       ❌
 ```
 
 ### Installing
@@ -42,7 +52,7 @@ sh test.sh
 echo -n "some text" | ./ft_ssl md5
 ```
 
-## Flags
+### [md5, sha256, sha512] Flags :
 ```
 • -p, echo STDIN to STDOUT and append the checksum to STDOUT
 • -q, quiet mode
@@ -50,4 +60,10 @@ echo -n "some text" | ./ft_ssl md5
 • -s, print the sum of the given string
 ```
 
-
+### Base64 Flags :
+```
+• -d, decode mode
+• -e, encode mode (default)
+• -i, input file
+• -o, output file
+```
