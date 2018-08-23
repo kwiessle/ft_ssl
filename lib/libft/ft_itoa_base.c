@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/10 18:42:01 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/14 14:13:38 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/23 15:11:57 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,7 @@ char	*ft_strnewzero(size_t size)
 
 char	*ft_itoa_base(long value, int base)
 {
-
 	long			max;
-	static char		hex[16] = "0123456789abcdef";
 	char			*text;
 	static int		i;
 	long			nb;
@@ -76,8 +74,8 @@ char	*ft_itoa_base(long value, int base)
 	max = max_power(nb, base);
 	while (max > 0)
 	{
-		text[i] = hex[nb / max];
-        ft_putchar(text[i]);
+		text[i] = S_16[nb / max];
+		ft_putchar(text[i]);
 		nb %= max;
 		max /= base;
 		i++;
@@ -85,12 +83,9 @@ char	*ft_itoa_base(long value, int base)
 	return (text);
 }
 
-
 char	*ft_itoa_base64(long value)
 {
-
 	long			max;
-	static char		hex[64] = B64_SET;
 	char			*text;
 	static int		i;
 	long			nb;
@@ -108,8 +103,8 @@ char	*ft_itoa_base64(long value)
 	max = max_power(nb, 64) - 1;
 	while (max > 0)
 	{
-		text[i] = hex[nb / max];
-        ft_putchar(text[i]);
+		text[i] = S_64[nb / max];
+		ft_putchar(text[i]);
 		nb %= max;
 		max /= 64;
 		i++;

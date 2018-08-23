@@ -6,7 +6,7 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 17:34:58 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/18 12:35:01 by kiefer           ###   ########.fr       */
+/*   Updated: 2018/08/23 15:44:20 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,21 @@
 
 # define BUFF_SIZE 42
 # define EOL '\n'
-# define B16_SET "0123456789abcdef"
-# define B64_SET "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+# define S_16 "0123456789abcdef"
+# define S_64 "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+# define S_WSP " \t\n\v\f\r"
 
-typedef enum 		s_bool
+typedef enum		e_bool
 {
 	false,
 	true
-}					e_bool;
+}					t_bool;
 
-typedef enum 		s_state
+typedef enum		e_state
 {
 	off,
 	on
- } 					e_state;
+}					t_state;
 
 typedef struct		s_list
 {
@@ -111,13 +112,13 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					get_next_line(const int fd, char **line);
-char 				*ft_strappend(char *chain, char new);
+char				*ft_strappend(char *chain, char new);
 char				*ft_itoa_base(long value, int base);
 void				ft_putnbr_base(unsigned int n, int base, char *set);
-void 				ft_swap(unsigned char *a, unsigned char *b);
+void				ft_swap(unsigned char *a, unsigned char *b);
 void				ft_putbignbr_base(unsigned long n, int base, char *set);
-void    			ft_putstr_drop(char *str, char drop);
-char    			*ft_itoa_base64(long nb);
-int         		ft_stroccur(char *str, char *set);
-char		        *ft_strcrop(char *str, char *set);
+void				ft_putstr_drop(char *str, char drop);
+char				*ft_itoa_base64(long nb);
+int					ft_stroccur(char *str, char *set);
+char				*ft_strcrop(char *str, char *set);
 #endif

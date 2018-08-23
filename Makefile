@@ -43,6 +43,10 @@ fclean: clean
 	rm -f	$(NAME)
 	@make -C lib/libft/ fclean
 
+norme42:
+	norminette lib
+	norm includes
+	norme srcs
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re norme

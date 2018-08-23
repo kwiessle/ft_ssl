@@ -6,13 +6,13 @@
 /*   By: kwiessle <kwiessle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:27:52 by kwiessle          #+#    #+#             */
-/*   Updated: 2018/08/13 15:54:24 by kwiessle         ###   ########.fr       */
+/*   Updated: 2018/08/23 15:14:44 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static long	max_power(long nb, int base)
+long		max_power(long nb, int base)
 {
 	long max;
 
@@ -24,22 +24,24 @@ static long	max_power(long nb, int base)
 	return (max);
 }
 
-void    ft_putnbr_base(unsigned int n, int base, char *set)
+void		ft_putnbr_base(unsigned int n, int base, char *set)
 {
-    long            power = max_power(n, base);
+	long	power;
 
-    while (power > 0) {
-        ft_putchar(set[n / power]);
-        n %= power;
-        power = power / base;
-    }
+	power = max_power(n, base);
+	while (power > 0)
+	{
+		ft_putchar(set[n / power]);
+		n %= power;
+		power = power / base;
+	}
 }
 
-void	ft_putbignbr_base(unsigned long n, int base, char *set)
+void		ft_putbignbr_base(unsigned long n, int base, char *set)
 {
 	unsigned int	lhs;
 
-	lhs = n  >> 32;
+	lhs = n >> 32;
 	ft_putnbr_base(lhs, base, set);
 	ft_putnbr_base(n, base, set);
 }
